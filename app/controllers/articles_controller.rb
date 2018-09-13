@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 	def create
 		# render plain: params[:article].inspect # To display the list of values passed as a parameter on submitting the form
 		@article = Article.new(article_params)
+		@article.user = User.first
 		if @article.save
 			flash[:success] = "Article was successfully created!!!"
 			redirect_to article_path(@article)
